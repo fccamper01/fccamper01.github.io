@@ -1,0 +1,30 @@
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-se;
+    background-image:url("img/bkgr.jpg");
+    background-size: cover;
+    background-color:rgba(0,0,0,0.5);
+    color:#000;
+    font-size: 2.5em;
+}
+p, button {
+    text-align: center;
+    margin:auto;
+  display:block;
+}
+
+button {
+    font-family: "Comic Sans MS", cursive, sans-se;
+    font-size: 0.6em;
+    background-color: rgba(0,0,0,0.8);
+    color:#fff;
+    border-radius: 5%;
+    border:none;
+    box-shadow: 1 1 0.5;
+    padding: 2%;
+    margin-top: 5%;
+}
+
+#quoteContainer {
+    margin-top:15%;
+}
