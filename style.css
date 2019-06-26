@@ -1,13 +1,11 @@
 
 body {
-    font-family: "Comic Sans MS", cursive, sans-se;
-    background-image:url("");
-    background-size: cover;
     background-color: #000;
     color:#fff;
 }
 
-a:link, a:visited {
+a:link, a:visited, a:active {
 text-decoration: none;
+color: #fff;
 }
 
