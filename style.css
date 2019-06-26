@@ -1,7 +1,7 @@
 
 body {
     font-family: "Comic Sans MS", cursive, sans-se;
-    background-image:url("img/bkgr.jpg");
+    background-image:url("");
     background-size: cover;
     color:#000;
     font-size: 1.5em;
@@ -9,27 +9,5 @@ body {
 
 a:link, a:visited {
 text-decoration: none;
-background-color: #005;
 }
 
-p, button {
-    text-align: center;
-    margin:auto;
-  display:block;
-}
-
-button {
-    font-family: "Comic Sans MS", cursive, sans-se;
-    font-size: 0.6em;
-    background-color: rgba(0,0,0,0.8);
-    color:#fff;
-    border-radius: 5%;
-    border:none;
-    box-shadow: 1 1 0.5;
-    padding: 2%;
-    margin-top: 5%;
-}
-
-#quoteContainer {
-    margin-top:15%;
-}
