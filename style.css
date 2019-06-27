@@ -1,11 +1,12 @@
 
 body {
     background-color: #C2EABD;
-    color:#fff;
+    color: #CD533B;
 }
 
 a:link, a:visited, a:active {
 text-decoration: none;
 color: #CD533B;
+font-weight:bold;
 }
 
