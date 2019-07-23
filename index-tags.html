@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AutoMate</title>
+    <link rel="stylesheet" type="text/css" href="style-tags.css">
+  </head>
+  <body>
+
+<header>
+
+<ul>
+    <li id="logo"><a href="#">AutoMate</a></li>
+</ul>
+
+  <ul id="right-menu">
+    <li class="menu-column"><a href="index-conditions.html">Conditions</a></li>
+    <li class="menu-column"><a href="#">Documentation</a></li>
+  </ul>
+  
+
+</header>
+
+<div class="row">
+<div class="column conditions">
+  <h3>Tags</h3>
+
+  <div id="tagType">
+    <h4>Choose the tags type</h4>
+
+      <button id="floodlight">Floodlight</button>
+      <button id="di">Decibel Insight</button>
+  </div><!--end of tagType-->
+
+  <h4>Paste code snippets</h4>
+    <input id="inputTags" placeholder="Insert the code snippets here">
+      <label>Type in the expiry date</label>
+    <input type="date" id="inputDate">
+      <h4>SC number</h4>
+      <input type="text" id="inputSC">
+      <h4>Choose Space</h4>
+      <button id="prod">prod</button>
+      <button id="global">global</button>
+      <button id="hcp3prod">hcp3prod</button>
+       <br> <br>
+    <button id="generate">GENERATE CODE</button>
+    <button id="reset">RESET</button>
+
+  </div><!--End of column conditions-->
+
+
+<div class="column tags">
+    <h3>Result</h3>
+    
+    <div id="result">
+    
+      <pre>
+        //Start of send requests
+        var tags =pm.environment.get("tags");
+        var tagName=pm.environment.get("tagName");
+        var expiryDate=pm.environment.get("expiryDate");
+           var scNumber=pm.environment.get("scNumber");
+           scNumber=<span id="scNumber"></span>;
+
+
+//End of of setNextRequest    
+       
+        if(!tags && !tagName){
+         tags =<span id="tags"></span>;
+        tagName=["DI1", "DI2", "DI3", "DI4"];     
+        }//End of if statement
+         var currentTag =tags.shift();
+         var currentTagName =tagName.shift();
+         pm.environment.set("currentTag", currentTag);
+        pm.environment.set("tags", tags);
+        pm.environment.set("currentTagName", currentTagName);
+        console.log(currentTag);
+        console.log(currentTagName);
+        pm.environment.set("tagName", tagName);
+        
+        expiryDate =<span id="expiryDate"></span>;
+        pm.environment.set("expiryDate", expiryDate);
+        pm.environment.set("scNumber", scNumber);
+
+        //End of send requests
+        
+        
+//Start of setNextRequest
+if(tags&&tags.length>0 && tagName&&tagName.length>0){
+ postman.setNextRequest("https://manage-api.ensighten.com/manage/spaces/23972/deployments")  
+} else {
+     postman.setNextRequest(null);  
+}
+      </pre>
+
+        </div><!--end of result-->
+  </div><!--end of column tags-->
+
+</div><!--End of row-->
+<script src="script-tags.js"></script>
+
+</body>
+</html>
+
+
+<!--
+anoro.com
+nucala.com
+advair.co.uk
+meningitisb.es
+aboutwhoopingcough.com,
+anoro.com,
+nucala.com,
+advair.co.uk,
+meningitisb.es,
+aboutwhoopingcough.com,
+anoro.com,
+nucala.com,
+advair.co.uk,
+meningitisb.es,
+aboutwhoopingcough.com
+-->
