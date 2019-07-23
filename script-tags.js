@@ -15,23 +15,21 @@ generateButton.addEventListener("mousedown", function(){
 
 let res=document.querySelector("#inputTags").value.split('<img src=""');
 res=res[1].split("?");
+console.log(res);
 console.log(res[0]);
+console.log(res[1]);
 
 //Floodlight
 let imgCreate= "var pxl = document.createElement('IMG'); pxl.setAttribute('src','";
 let tagURL=res[0];
-let tagAttr = "?'); pxl.setAttribute('width', '1'); pxl.setAttribute('height', '1'); pxl.setAttribute('alt', ''); document.body.appendChild(pxl); console.log('pixel fires');"
+let tagAttr = "'); pxl.setAttribute('width', '1'); pxl.setAttribute('height', '1'); pxl.setAttribute('alt', ''); document.body.appendChild(pxl); console.log('pixel fires');"
 
 
 //Input tag
-let array=document.querySelector("#inputTags").value.split('" "');
-
-//test
-//let userLinks =document.querySelector("#inputUrls").value;
-
-//array =userLinks.split(" ");
+/*let array=document.querySelector("#inputTags").value.split('" "');
 
 //loop
+
 for(i=0; i<array.length; i++){
     let textnode;
    
@@ -43,11 +41,12 @@ for(i=0; i<array.length; i++){
      textnode = document.createTextNode('"'+array[i]+'"');
 }
 document.querySelector("#tags").appendChild(textnode);
-}
+}*/
+
 //end of test
 
 
-//tags.innerHTML="[\""+imgCreate+tagURL+tagAttr+"\"]";
+tags.innerHTML="[\""+imgCreate+tagURL+tagAttr+"\"]";
 tags.style.color="red";
 tags.style.fontWeight ="900";
 //End of input tag
@@ -72,7 +71,34 @@ let reset=document.querySelector("#reset");
 
 reset.addEventListener("mousedown", function(){
     window.location.reload();
-})
+});
 
 //End of reset button
 
+//select pre
+
+(function() {
+    function selectText(element) {
+        var doc = document
+            , text = element
+            , range, selection
+        ;
+        if (doc.body.createTextRange) { //ms
+            range = doc.body.createTextRange();
+            range.moveToElementText(text);
+            range.select();
+        } else if (window.getSelection) { //all others
+            selection = window.getSelection();
+            range = doc.createRange();
+            range.selectNodeContents(text);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    }
+    preTags = document.getElementsByTagName('pre');
+    for(var i=0;i<preTags.length;i++) {
+        preTags[i].onclick = function() {selectText(this)};
+    }
+})();
+
+//End of select pre
