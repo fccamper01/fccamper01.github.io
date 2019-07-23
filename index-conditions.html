@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AutoMate</title>
+    <link rel="stylesheet" type="text/css" href="style-conditions.css">
+  </head>
+  <body>
+
+<header>
+
+<ul>
+    <li id="logo"><a href="#">AutoMate</a></li>
+</ul>
+
+  <ul id="right-menu">
+    <li class="menu-column"><a href="index-tags.html">Tags</a></li>
+    <li class="menu-column"><a href="#">Documentation</a></li>
+  </ul>
+  
+
+</header>
+
+<div class="row">
+<div class="column conditions">
+  <h3>Conditions</h3>
+    <input id="inputUrls" placeholder="Insert space-separated URLs here">
+      <label>Type in the expiry date</label>
+      <input id="expiryDate" type="date" value="2019-12-31">
+    <button id="wildcard">WILDCARD</button>
+    <button id="generate">GENERATE CODE</button>
+    <button id="reset">RESET</button>
+  </div>
+
+<div class="column tags">
+    <h3>Result</h3>
+    
+    <div id="result">
+      <pre>
+               
+        
+         //Start of send requests
+         var links =pm.environment.get("links");
+         var subpage=pm.environment.get("subpagePath");
+         var domain=pm.environment.get("domain");
+         var tldSld=pm.environment.get("tldSld");
+         var expiryDate=pm.environment.get("expiryDate");
+
+         
+         if(!links){
+          links =[<span id="postmanUrls"></span>]
+         }
+         
+         var currentLink =links.shift();
+         pm.environment.set("link", currentLink)
+         pm.environment.set("links", links)
+         //End of send requests
+         
+         //Start of subpage
+         subpagePath=currentLink.substring(currentLink.indexOf('/'));
+               //console.log(subpagePath);
+          if(subpagePath.includes("/")){
+              //console.log("great success");
+               subpagePath="^("+subpagePath+"?)$";
+          }
+          else{
+         subpagePath="^(/?)$";
+         }
+        
+         //console.log(subpagePath);
+         
+        
+         
+         pm.environment.set("subpagePath", subpagePath)
+         
+         //End of subpage
+         
+         //Domain
+           domain=currentLink.substring(0, currentLink.indexOf('.'));
+           pm.environment.set("domainName", domain)
+           
+           //End of domain
+           
+           //tldSld
+            tldSld=currentLink.substring(currentLink.length, currentLink.indexOf('.'));
+             console.log(tldSld);
+            tldSld=tldSld.substring(tldSld, tldSld.indexOf("/"));
+           console.log(tldSld);
+           pm.environment.set("tldSld", tldSld)
+           //End of tldSld
+           
+       //expiryDate
+       expiryDate ="<span id="postmanExpiryDate"></span>";
+       pm.environment.set("expiryDate", expiryDate)
+       //End of expiryDate
+          </pre>
+        </div>
+  </div>
+
+</div>
+<script src="script-conditions.js"></script>
+
+</body>
+</html>
+
+
+<!--
+https://test1.com
+https://www.test2.es
+test3.com/subpage
+test4.es/subpage/subpage2
+-->
