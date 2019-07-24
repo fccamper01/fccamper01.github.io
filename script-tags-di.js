@@ -50,7 +50,8 @@ for(i=0; i<array.length; i++){
     let textnode;
 
    let res=document.querySelector("#inputTags").value.split('<img src=""');
-      res=res[i+1].split("?");
+    console.log(res);
+   res=res[i+1].split("?");
    //console.log(res);
 array[i]=res[0];
 //console.log(array[i]);
@@ -96,12 +97,6 @@ if(i<array.length-1){
 tagName.appendChild(tagNode);
 
 //End of tagName
-
-//numberTags
-    let numberTags=document.querySelector("#numberTags");
-    numberTags.innerHTML=i;
-
-//End of numberTags
 
 }; //End of for loop
 });

@@ -35,6 +35,7 @@
 
   <h4>Paste code snippets</h4>
     <input id="inputTags" placeholder="Insert the code snippets here">
+    <input type="text" id="numberTags"></input><br>
       <label>Type in the expiry date</label>
     <input type="date" id="inputDate">
       <h4>SC number</h4>
@@ -43,6 +44,7 @@
       <button id="prod">prod</button>
       <button id="global">global</button>
       <button id="hcp3prod">hcp3prod</button>
+      <button id="hcp3dev">hcp3dev</button>
        <br> <br>
     <button id="generate">GENERATE CODE</button>
     <button id="reset">RESET</button>
@@ -67,8 +69,8 @@
 //End of of setNextRequest    
        
         if(!tags && !tagName){
-         tags =<span id="tags"></span>;
-        tagName=["DI1", "DI2", "DI3", "DI4"];     
+         tags =[<span id="tags"></span>];
+        tagName=[<span id="tagName"></span>];     
         }//End of if statement
          var currentTag =tags.shift();
          var currentTagName =tagName.shift();
@@ -88,7 +90,7 @@
         
 //Start of setNextRequest
 if(tags&&tags.length>0 && tagName&&tagName.length>0){
- postman.setNextRequest("https://manage-api.ensighten.com/manage/spaces/23972/deployments")  
+ postman.setNextRequest("https://manage-api.ensighten.com/manage/spaces/<span id="spaceId">23972</span>/deployments")  
 } else {
      postman.setNextRequest(null);  
 }
@@ -98,7 +100,16 @@ if(tags&&tags.length>0 && tagName&&tagName.length>0){
   </div><!--end of column tags-->
 
 </div><!--End of row-->
-<script src="script-tags.js"></script>
+<script>
+  let extScript=document.querySelector("#extScript").src;
+  let di=document.querySelector("di");
+  di.addEventListener("mousedown", function(){
+    extScript="";
+    console.log(extScript);
+  });
+</script>
+
+<script id="extScript" src="script-tags-fl.js"></script>
 
 </body>
 </html>
